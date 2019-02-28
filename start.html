@@ -43,6 +43,52 @@
 
 	<script type="text/javascript">
 
+		const computer = document.querySelector('#computer')
+		const human = document.getElementById('human')
+		const button = document.getElementsByTagName('button')[0]
+
+		function clickHandler(){
+			computer.innerHTML = human.value
+		}
+		window.addEventListener("keydown", keyDownHandler)
+		function keyDownHandler (event){
+			if (event.keyCode ==  13 || event.keyCode == 10 ){
+				playGame();
+			}
+		}
+		let randomResponses = [
+			"I don't like you.",
+			"you are soooo cool...",
+			"I love talking to you...",
+			"Why don't you leave me alone."
+		]
+
+		function playGame() {
+			let humanMessage = (human.value).toLowerCase()
+			if (humanMessage.indexOf("tired") !== -1) {
+				computer.innerHTML = "You better get some sleep."
+			} else if (humanMessage.indexOf("sleepy") !== -1) {
+				computer.innerHTML = "You better get some sleep."
+			} else if (humanMessage.indexOf("exhausted") !== -1) {
+				computer.innerHTML = "You better get some sleep."
+			} else if (humanMessage.indexOf("famished") !== -1) {
+				computer.innerHTML = "You better get some food."
+			} else {
+				// link
+				if (randomResponses.length > 0) {
+					// show the random answer
+					const ranNum = Math.floor(Math.random()*randomResponses.length)
+					console.log(ranNum);
+					computer.innerHTML = randomResponses[ranNum]
+					randomResponses.splice(ranNum, 1)
+				} else {
+					//go someplace else
+					location.assign("https://wallpaperplay.com/genres/sci-fi")
+				}
+
+			}
+			human.value = ""
+		}
 
 	</script>
 </body>
