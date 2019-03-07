@@ -47,6 +47,11 @@
 		const human = document.getElementById('human')
 		const button = document.getElementsByTagName('button')[0]
 
+		let computerMsg = ""
+		let humanMsg = ""
+		let questionTrack = "start"
+
+
 		function clickHandler(){
 			computer.innerHTML = human.value
 		}
@@ -63,32 +68,75 @@
 			"Why don't you leave me alone."
 		]
 
-		function playGame() {
-			let humanMessage = (human.value).toLowerCase()
-			if (humanMessage.indexOf("tired") !== -1) {
-				computer.innerHTML = "You better get some sleep."
-			} else if (humanMessage.indexOf("sleepy") !== -1) {
-				computer.innerHTML = "You better get some sleep."
-			} else if (humanMessage.indexOf("exhausted") !== -1) {
-				computer.innerHTML = "You better get some sleep."
-			} else if (humanMessage.indexOf("famished") !== -1) {
-				computer.innerHTML = "You better get some food."
+		function genericResponse() {
+			if (randomResponses.length > 0) {
+				// show the random answer
+				const ranNum = Math.floor(Math.random()*randomResponses.length)
+				computerMsg = randomResponses[ranNum]
+				randomResponses.splice(ranNum, 1)
 			} else {
-				// link
-				if (randomResponses.length > 0) {
-					// show the random answer
-					const ranNum = Math.floor(Math.random()*randomResponses.length)
-					console.log(ranNum);
-					computer.innerHTML = randomResponses[ranNum]
-					randomResponses.splice(ranNum, 1)
-				} else {
-					//go someplace else
-					location.assign("https://wallpaperplay.com/genres/sci-fi")
-				}
-
+				//go someplace else
+				endGame()
 			}
-			human.value = ""
 		}
+		function endGame() {
+			//go someplace else
+			location.assign("https://wallpaperplay.com/genres/sci-fi")
+		}
+
+		function playGame() {
+
+			humanMsg = (human.value).toLowerCase()
+
+			if (questionTrack == "start") {
+				startEval()
+				} else if (questionTrack == "color"){
+				colorEval()
+				}	else {
+				genericResponse()
+			}
+
+			function startEval(){
+				if (humanMsg.indexOf("good") !== -1){
+					computerMsg = "Glad to hear that. What is your favorite color?"
+					questionTrack = "color"
+				} else if (humanMsg.indexOf("bad") !== -1){
+					computerMsg = "You sound depressed. Do you like dogs?"
+					questionTrack = "dog"
+				} else {
+					genericResponse()
+				}
+			}
+
+			function colorEval(){
+				if (humanMsg.indexOf("red") !== -1){
+					computerMsg = "You must be a dick, should I fight you?"
+					questionTrack = "fight"
+				} else if (humanMsg.indexOf("blue") !== -1){
+					computerMsg = "I thought you said you were feeling good. Are you sad?"
+					questionTrack = "sad"
+				} else {
+					genericResponse()
+			}
+		}
+			// if (humanMsg.indexOf("tired") !== -1) {
+			// 	computerMsg.innerHTML = "You better get some sleep."
+			// } else if (humanMsg.indexOf("sleepy") !== -1) {
+			// 	computerMsg.innerHTML = "You better get some sleep."
+			// } else if (humanMsg.indexOf("exhausted") !== -1) {
+			// 	computerMsg.innerHTML = "You better get some sleep."
+			// } else if (humanMsg.indexOf("famished") !== -1) {
+			// 	computerMsg.innerHTML = "You better get some food."
+			// } else {
+			// 	// link
+			// 	genericResponse()
+			// 	}
+
+				computer.innerHTML = computerMsg
+				human.value = ""
+			}
+
+
 
 	</script>
 </body>
