@@ -2,51 +2,204 @@
 <html>
 
 <head>
-	<title>Electric Dreams</title>
-
+	<title>SEASONAL DREAMS</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Shadows+Into+Light+Two" rel="stylesheet">
 	<style type="text/css">
 		/*style the computer text, input, and button*/
 		body {
-			font-family: monospace;
+			font-kerning: auto;
 			font-size: 2em;
-			background-color: #3c3c3c;
+			margin: 0;
+			/* background-color: #3c3c3c; */
 		}
+
+		h1{
+			font-family: 'Shadows Into Light Two', sans-serif;
+		}
+
 		button {
 			display: none;
 		}
-		input{
+
+		input {
 			font-size: 1em;
-			font-family: monospace;
+			font-family: font-family: 'Roboto', sans-serif;
+			width: 90%;
 		}
-		.red { color: red;}
-		.green {color: rgb(74, 247, 31);}
-		h1{color: white;}
-		main{
-			width:50%;
-			margin: 1em auto;
-			padding: 1em 1em 2em 1em;
+
+		.red {
+			color: red;
+		}
+
+		.textColor {
+			color: rgb(51, 51, 51);
+			font-family: 'Roboto', sans-serif;
+		}
+
+		h1 {
+			color: white;
+		}
+
+		main {
+			width: 60%;
+			/* margin: 1em auto; */
+			padding: 1em 1em 2em 2em;
 			border-radius: 50px;
-			border: 3px solid rgb(74, 247, 31);
-			background-color: rgb(32, 66, 36);
+			/* border: 3px solid rgb(74, 247, 31); */
+			background-color: rgb(140, 143, 140);
 		}
-		.displayNone{
+
+		.springColor {
+			animation-name: first;
+			animation-duration: 3s;
+			background-color: rgb(245, 186, 255);
+		}
+
+		.summerColor {
+			animation-name: second;
+			animation-duration: 3s;
+			background-color: rgb(114, 194, 240);
+		}
+
+		.fallColor {
+			animation-name: third;
+			animation-duration: 3s;
+			background-color: rgb(218, 110, 22);
+		}
+
+		.winterColor {
+			animation-name: fourth;
+			animation-duration: 3s;
+			background-color: rgb(44, 94, 159);
+		}
+
+		.flexContainer {
+			display: flex;
+			width: 100vw;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+			z-index: 2;
+			position: relative;
+		}
+
+		.displayNone {
 			display: none;
 		}
+
+		.background {
+			background-color: red;
+			height: 100vh;
+			width: 100vw;
+			z-index: 0;
+			position: relative;
+			margin: 0 0 -100vh 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+
+		.spring {
+			grid-column: 1 / 2;
+			grid-row: 1 / 2;
+			background-image: url(https://cdn.pixabay.com/photo/2014/12/04/14/46/magnolia-trees-556718_1280.jpg);
+			background-size: cover;
+		}
+
+		.summer {
+			grid-column: 2 / 3;
+			grid-row: 1 / 2;
+			background-image: url(https://cdn.pixabay.com/photo/2014/12/15/17/16/pier-569314_1280.jpg);
+			background-size: cover;
+		}
+
+		.fall {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+			background-image: url(https://cdn.pixabay.com/photo/2018/11/09/08/08/autumn-3804001_1280.jpg);
+			background-size: cover;
+		}
+
+		.winter {
+			grid-column: 1 / 2;
+			grid-row: 2 / 3;
+			background-image: url(https://cdn.pixabay.com/photo/2016/12/12/16/47/snow-1902052_1280.jpg);
+			background-size: cover;
+		}
+
+		.full {
+			grid-column: 1 / 3;
+			grid-row: 1 / 3;
+			z-index: 1;
+			position: relative;
+		}
+
+		@keyframes first {
+			from {
+				background-color: rgb(140, 143, 140);
+			}
+
+			to {
+				background-color: rgb(245, 186, 255);
+			}
+		}
+
+		@keyframes second {
+			from {
+				background-color: rgb(140, 143, 140);
+			}
+
+			to {
+				background-color: rgb(114, 194, 240);
+			}
+		}
+
+		@keyframes third {
+			from {
+				background-color: rgb(140, 143, 140);
+			}
+
+			to {
+				background-color: rgb(218, 110, 22);
+			}
+		}
+
+		@keyframes fourth {
+			from {
+				background-color: rgb(140, 143, 140);
+			}
+
+			to {
+				background-color: rgb(44, 94, 159);
+			}
+		}
+
 	</style>
 </head>
 
 <body>
-	<main>
-		<h1>Electric Dreams</h1>
-		<p id="computer" class="green">Hello, nice to meet you. If you were a season which would you be?</p>
-		<input id="human" type="text" placeholder="Type your response...">
-		<button>Enter</button>
-
-	</main>
+	<div class=background>
+		<div class="spring"></div>
+		<div class="summer"></div>
+		<div class="fall"></div>
+		<div class="winter"></div>
+	</div>
+	<div class="flexContainer">
+		<main>
+			<h1>SEASONAL DREAMS</h1>
+			<p id="computer" class="textColor">Hello, nice to meet you. If you were a season which would you be?</p>
+			<input id="human" type="text" placeholder="Type your response...">
+			<button>Enter</button>
+		</main>
+	</div>
 
 	<script type="text/javascript">
-
 		const computer = document.querySelector('#computer')
+		const spring = document.querySelector('.spring')
+		const summer = document.querySelector('.summer')
+		const fall = document.querySelector('.fall')
+		const winter = document.querySelector('.winter')
+		const mainBox = document.getElementsByTagName('main')[0]
 		const human = document.getElementById('human')
 		const button = document.getElementsByTagName('button')[0]
 
@@ -55,12 +208,13 @@
 		let questionTrack = "start"
 
 
-		function clickHandler(){
+		function clickHandler() {
 			computer.innerHTML = human.value
 		}
 		window.addEventListener("keydown", keyDownHandler)
-		function keyDownHandler (event){
-			if (event.keyCode ==  13 || event.keyCode == 10 ){
+
+		function keyDownHandler(event) {
+			if (event.keyCode == 13 || event.keyCode == 10) {
 				playGame();
 			}
 		}
@@ -74,20 +228,21 @@
 		function genericResponse() {
 			if (randomResponses.length > 0) {
 				// show the random answer
-				const ranNum = Math.floor(Math.random()*randomResponses.length)
+				const ranNum = Math.floor(Math.random() * randomResponses.length)
 				computerMsg = randomResponses[ranNum]
 				randomResponses.splice(ranNum, 1)
 			} else {
 				//go someplace else
 				computerMsg = "Goodbye Human"
 				human.className = "displayNone"
-				setTimeout(endGame, 2000)
+				setTimeout(endGame, 3000)
 				endGame()
 			}
 		}
+
 		function endGame() {
 			//go someplace else
-			location.assign("https://wallpaperplay.com/genres/sci-fi")
+			location.assign("https://media.giphy.com/media/3o6ZtmlJoOd59h2HMk/giphy.gif")
 		}
 
 		function playGame() {
@@ -96,53 +251,146 @@
 
 			if (questionTrack == "start") {
 				startEval()
-			} else if (questionTrack == "flower"){
+			} else if (questionTrack == "flower") {
 				flowerEval()
-			} else if (questionTrack == "cool"){
-				flowerEval()
-			} else if (questionTrack == "leaves"){
-				flowerEval()
-			}	else if (questionTrack == "snow"){
-				flowerEval()
+			} else if (questionTrack == "cool") {
+				coolEval()
+			} else if (questionTrack == "leaves") {
+				leavesEval()
+			} else if (questionTrack == "eggs") {
+				eggsEval()
+			} else if (questionTrack == "positive") {
+				posEval()
+			} else if (questionTrack == "bunny") {
+				bunnyEval()
+			} else if (questionTrack == "spiral") {
+				spiralEval()
 			} else {
 				genericResponse()
 			}
 
-			function startEval(){
-				if (humanMsg.indexOf("spring") !== -1){
+			function startEval() {
+				if (humanMsg.indexOf("spring") !== -1) {
 					computerMsg = "You must like flowers, what color is your favorite?"
 					questionTrack = "flower"
-				} else if (humanMsg.indexOf("summer") !== -1){
+					spring.className += " full"
+					mainBox.className += "springColor"
+				} else if (humanMsg.indexOf("summer") !== -1) {
 					computerMsg = "You like the heat huh? What do you do to cool down?"
 					questionTrack = "cool"
-				} else if (humanMsg.indexOf("fall") !== -1 || humanMsg.indexOf("autumn") !== -1){
+					summer.className += " full"
+					mainBox.className += "summerColor"
+				} else if (humanMsg.indexOf("fall") !== -1 || humanMsg.indexOf("autumn") !== -1) {
 					computerMsg = "I guess you like raking leaves then? Which leaf color do you like best?"
 					questionTrack = "leaves"
-				} else if (humanMsg.indexOf("winter") !== -1){
+					fall.className += " full"
+					mainBox.className += "fallColor"
+				} else if (humanMsg.indexOf("winter") !== -1) {
 					computerMsg = "You must be a masochist. How many feet of snow would make you happy?"
-					questionTrack = "snow"
+					questionTrack = "spiral"
+					winter.className += " full"
+					mainBox.className += "winterColor"
 				} else {
 					genericResponse()
 				}
 			}
 
-			function flowerEval(){
-				if (humanMsg.indexOf("pink") !== -1 || humanMsg.indexOf("blue") !== -1 || humanMsg.indexOf("red") !== -1 || humanMsg.indexOf("yellow") !== -1){
+			function flowerEval() {
+				if (humanMsg.indexOf("pink") !== -1 || humanMsg.indexOf("blue") !== -1 || humanMsg.indexOf("red") !== -1 || humanMsg.indexOf("yellow") !== -1) {
 					computerMsg = "You're as bland as dry toast, why are you so predictable?"
 					questionTrack = "spiral"
-				} else if (humanMsg.indexOf("black") !== -1){
+				} else if (humanMsg.indexOf("black") !== -1) {
 					computerMsg = "You're creepy, are you goth?"
 					questionTrack = "spiral"
-				} else if (humanMsg.indexOf("white") !== -1){
+				} else if (humanMsg.indexOf("white") !== -1) {
 					computerMsg = "That's not a color, are you an idiot?"
 					questionTrack = "spiral"
-				} else if (humanMsg.indexOf("orange") !== -1){
+				} else if (humanMsg.indexOf("orange") !== -1) {
 					computerMsg = "I like your style. What do you put in easter eggs?"
 					questionTrack = "eggs"
 				} else {
 					genericResponse()
+				}
 			}
-		}
+
+			function coolEval() {
+				if (humanMsg.indexOf("swim") !== -1 || humanMsg.indexOf("pool") !== -1 || humanMsg.indexOf("water") !== -1 || humanMsg.indexOf("lake") !== -1) {
+					computerMsg = "That's normal human behavior. Do you like to be tan?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("eat") !== -1 || humanMsg.indexOf("cream") !== -1 || humanMsg.indexOf("pop") !== -1 || humanMsg.indexOf("soda") !== -1) {
+					computerMsg = "You should slow down! That stuff will make you fat, why would you consume that?"
+					questionTrack = "spiral"
+				} else {
+					genericResponse()
+				}
+			}
+
+			function leavesEval() {
+				if (humanMsg.indexOf("green") !== -1) {
+					computerMsg = "That's not a fall color… are you an idiot?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("red") !== -1) {
+					computerMsg = "Boring, why are you so typical?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("yellow") !== -1) {
+					computerMsg = "Hmm… Do you like ducks?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("orange") !== -1 || humanMsg.indexOf("tangerine") !== -1 || humanMsg.indexOf("amber") !== -1 || humanMsg.indexOf("apricot") !== -1) {
+					computerMsg = "You obviously know what you're talkling about. Are you awesome or something?"
+					questionTrack = "positive"
+				} else {
+					genericResponse()
+				}
+			}
+
+			function eggsEval() {
+				if (humanMsg.indexOf("coins") !== -1 || humanMsg.indexOf("change") !== -1 || humanMsg.indexOf("money") !== -1 || humanMsg.indexOf("bills") !== -1) {
+					computerMsg = "Smart, you know what makes the kids happy. Are you the easter bunny?"
+					questionTrack = "bunny"
+				} else if (humanMsg.indexOf("candy") !== -1 || humanMsg.indexOf("chocolate") !== -1 || humanMsg.indexOf("jelly") !== -1 || humanMsg.indexOf("sugar") !== -1) {
+					computerMsg = "Fatty... why would you do that?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("nothing") !== -1 || humanMsg.indexOf("nada") !== -1 || humanMsg.indexOf("don't") !== -1 || humanMsg.indexOf("empty") !== -1) {
+					computerMsg = "Cheap ass, do you not like kids?"
+					questionTrack = "spiral"
+				} else {
+					genericResponse()
+				}
+			}
+
+			function bunnyEval() {
+				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("maybe") !== -1) {
+					computerMsg = "I thought so… nice chatting. Goodbye."
+					human.className = "displayNone"
+					setTimeout(endGame, 3000)
+					endGame()
+				} else {
+					genericResponse()
+				}
+			}
+
+			function posEval() {
+				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("definitely") !== -1) {
+					computerMsg = "I thought so… nice chatting. Goodbye."
+					human.className = "displayNone"
+					setTimeout(endGame, 3000)
+					endGame()
+				} else {
+					genericResponse()
+				}
+			}
+
+			function spiralEval() {
+				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("definitely") !== -1) {
+					computerMsg = "I thought so… nice chatting. Goodbye."
+					human.className = "displayNone"
+					setTimeout(endGame, 3000)
+					endGame()
+				} else {
+					genericResponse()
+				}
+			}
+
 			// if (humanMsg.indexOf("tired") !== -1) {
 			// 	computerMsg.innerHTML = "You better get some sleep."
 			// } else if (humanMsg.indexOf("sleepy") !== -1) {
@@ -156,12 +404,9 @@
 			// 	genericResponse()
 			// 	}
 
-				computer.innerHTML = computerMsg
-				human.value = ""
-			}
-
-
-
+			computer.innerHTML = computerMsg
+			human.value = ""
+		}
 	</script>
 </body>
 
