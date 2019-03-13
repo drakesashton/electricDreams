@@ -29,13 +29,16 @@
 			border: 3px solid rgb(74, 247, 31);
 			background-color: rgb(32, 66, 36);
 		}
+		.displayNone{
+			display: none;
+		}
 	</style>
 </head>
 
 <body>
 	<main>
 		<h1>Electric Dreams</h1>
-		<p id="computer" class="green">Hi, how are you today?</p>
+		<p id="computer" class="green">Hello, nice to meet you. If you were a season which would you be?</p>
 		<input id="human" type="text" placeholder="Type your response...">
 		<button>Enter</button>
 
@@ -76,6 +79,9 @@
 				randomResponses.splice(ranNum, 1)
 			} else {
 				//go someplace else
+				computerMsg = "Goodbye Human"
+				human.className = "displayNone"
+				setTimeout(endGame, 2000)
 				endGame()
 			}
 		}
@@ -90,31 +96,49 @@
 
 			if (questionTrack == "start") {
 				startEval()
-				} else if (questionTrack == "color"){
-				colorEval()
-				}	else {
+			} else if (questionTrack == "flower"){
+				flowerEval()
+			} else if (questionTrack == "cool"){
+				flowerEval()
+			} else if (questionTrack == "leaves"){
+				flowerEval()
+			}	else if (questionTrack == "snow"){
+				flowerEval()
+			} else {
 				genericResponse()
 			}
 
 			function startEval(){
-				if (humanMsg.indexOf("good") !== -1){
-					computerMsg = "Glad to hear that. What is your favorite color?"
-					questionTrack = "color"
-				} else if (humanMsg.indexOf("bad") !== -1){
-					computerMsg = "You sound depressed. Do you like dogs?"
-					questionTrack = "dog"
+				if (humanMsg.indexOf("spring") !== -1){
+					computerMsg = "You must like flowers, what color is your favorite?"
+					questionTrack = "flower"
+				} else if (humanMsg.indexOf("summer") !== -1){
+					computerMsg = "You like the heat huh? What do you do to cool down?"
+					questionTrack = "cool"
+				} else if (humanMsg.indexOf("fall") !== -1 || humanMsg.indexOf("autumn") !== -1){
+					computerMsg = "I guess you like raking leaves then? Which leaf color do you like best?"
+					questionTrack = "leaves"
+				} else if (humanMsg.indexOf("winter") !== -1){
+					computerMsg = "You must be a masochist. How many feet of snow would make you happy?"
+					questionTrack = "snow"
 				} else {
 					genericResponse()
 				}
 			}
 
-			function colorEval(){
-				if (humanMsg.indexOf("red") !== -1){
-					computerMsg = "You must be a dick, should I fight you?"
-					questionTrack = "fight"
-				} else if (humanMsg.indexOf("blue") !== -1){
-					computerMsg = "I thought you said you were feeling good. Are you sad?"
-					questionTrack = "sad"
+			function flowerEval(){
+				if (humanMsg.indexOf("pink") !== -1 || humanMsg.indexOf("blue") !== -1 || humanMsg.indexOf("red") !== -1 || humanMsg.indexOf("yellow") !== -1){
+					computerMsg = "You're as bland as dry toast, why are you so predictable?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("black") !== -1){
+					computerMsg = "You're creepy, are you goth?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("white") !== -1){
+					computerMsg = "That's not a color, are you an idiot?"
+					questionTrack = "spiral"
+				} else if (humanMsg.indexOf("orange") !== -1){
+					computerMsg = "I like your style. What do you put in easter eggs?"
+					questionTrack = "eggs"
 				} else {
 					genericResponse()
 			}
