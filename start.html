@@ -41,7 +41,7 @@
 		}
 
 		main {
-			width: 60%;
+			width: 50%;
 			/* margin: 1em auto; */
 			padding: 1em 1em 2em 2em;
 			border-radius: 50px;
@@ -218,27 +218,13 @@
 				playGame();
 			}
 		}
+
 		let randomResponses = [
 			"I don't like you.",
 			"you are soooo cool...",
 			"I love talking to you...",
 			"Why don't you leave me alone."
 		]
-
-		function genericResponse() {
-			if (randomResponses.length > 0) {
-				// show the random answer
-				const ranNum = Math.floor(Math.random() * randomResponses.length)
-				computerMsg = randomResponses[ranNum]
-				randomResponses.splice(ranNum, 1)
-			} else {
-				//go someplace else
-				computerMsg = "Goodbye Human"
-				human.className = "displayNone"
-				setTimeout(endGame, 3000)
-				endGame()
-			}
-		}
 
 		function endGame() {
 			//go someplace else
@@ -267,6 +253,21 @@
 				spiralEval()
 			} else {
 				genericResponse()
+			}
+
+			function genericResponse() {
+				if (randomResponses.length > 0) {
+					// show the random answer
+					const ranNum = Math.floor(Math.random() * randomResponses.length)
+					computerMsg = randomResponses[ranNum]
+					randomResponses.splice(ranNum, 1)
+				} else {
+					//go someplace else
+					computerMsg = "Goodbye Human"
+					human.className = "displayNone"
+					window.setTimeout(endGame, 3000)
+					endGame()
+				}
 			}
 
 			function startEval() {
@@ -362,7 +363,7 @@
 				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("maybe") !== -1) {
 					computerMsg = "I thought so… nice chatting. Goodbye."
 					human.className = "displayNone"
-					setTimeout(endGame, 3000)
+					window.setTimeout(endGame, 3000)
 					endGame()
 				} else {
 					genericResponse()
@@ -373,7 +374,7 @@
 				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("definitely") !== -1) {
 					computerMsg = "I thought so… nice chatting. Goodbye."
 					human.className = "displayNone"
-					setTimeout(endGame, 3000)
+					window.setTimeout(endGame, 3000)
 					endGame()
 				} else {
 					genericResponse()
@@ -384,7 +385,7 @@
 				if (humanMsg.indexOf("yes") !== -1 || humanMsg.indexOf("yup") !== -1 || humanMsg.indexOf("sure") !== -1 || humanMsg.indexOf("definitely") !== -1) {
 					computerMsg = "I thought so… nice chatting. Goodbye."
 					human.className = "displayNone"
-					setTimeout(endGame, 3000)
+					window.setTimeout(endGame, 3000)
 					endGame()
 				} else {
 					genericResponse()
